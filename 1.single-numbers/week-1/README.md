@@ -4,5 +4,7 @@
 Retinal Variables
 
 Position
+
 Shape
+
 Orientation
