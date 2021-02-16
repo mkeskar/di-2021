@@ -1,33 +1,57 @@
 function setup() {
-  createCanvas(720, 360);
-  background(0);
+  createCanvas(200,100);
+  text('look in the console ⤵', 20,20);
 
-  // assigning a variable to '[]' creates an array object with a length of zero and nothing in it
-  var coswave = [];
+  var people = [
+    {name:"Alice", age:20, student:true},
+    {name:"Bob", age:71, student:false},
+    {name:"Carol", age:54, student:false},
+    {name:"Dave", age:9, student:true}
+  ];
 
-  // Before drawing anything, we'll fill the 'coswave' array with values using a loop.
-  // After the loop is complete, the array will have as many values as the canvas's width.
-  // It will have values near 1 and the beginning and end, and approach 0 at its midpoint.
-  for (var i=0; i<width; i++){
-    var amount = map(i, 0, width, 0, PI); // map `i` (0 to 720) to `amount` (0 to PI)
-    var cosVal = abs(cos(amount)); // get the cosine (-1 to 1) of the amount and assign its absolute value (0 to 1) to the array
-    coswave.push(cosVal) // or, equivalently: coswave[i] = cosVal
-  }
 
-  // Let's now use the range of pre-computed values to draw some gradients...
-  var spacing = 10 // we'll draw vertical lines this many pixels apart from one another
-  strokeWeight(2) // try setting this equal to `spacing` to remove the space between lines
-  translate(spacing/2, 0) // center things within each of the spacing 'lanes'
+  print("Students:");
+  people.forEach(person => {
+    if (person.student){
+      print(person.name);
+    }
+  })
 
-  for (var i=0; i<width; i+=spacing){
-    /* use the 0–1 `coswave` value for this x location to pick a grey value in the 0–255 range */
-    stroke(coswave[i]*255);           // 0=black, 1=white
-    // stroke(255 - coswave[i]*255);  // 0=white, 1=black
-    // stroke(coswave[i] * 255/2);    // 0=black, 1=grey
 
-    /* draw a vertical line at the current x location from the top to bottom of the canvas */
-    line(i, 0, i, height);
-  }
+  print("Odd-numbered ages:");
+  people.forEach(person => {
+    if (person.age % 2 == 1){
+      print(person.name, person.age);
+    }
+  });
+
+
+  print("By age:")
+  var peopleByAge = _.sortBy(people, 'age')
+  // _.sortBy documentation: https://lodash.com/docs/4.17.15#sortBy
+
+  peopleByAge.forEach(person => {
+    print(person.age, person.name);
+  });
+
+
+  print("Creating a new array based on an old one:")
+  var otherPeople = people.map( person => {
+    var isAdult = person.age >= 18;
+
+    var job;
+    if (person.student){
+      job = 'student';
+    }else{
+      job = 'worker';
+    }
+
+    return {name:person.name.toUpperCase(), adult:isAdult, job:job};
+  });
+
+
+  print(people)
+  print(otherPeople)
 
 }
 

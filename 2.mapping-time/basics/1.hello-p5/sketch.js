@@ -1,7 +1,9 @@
 
 function setup() {
   createCanvas(512, 256); // set the size of the canvas
-  background(255) // fill the canvas with black pixels
+  background(255) // fill the canvas with white pixels
+
+  // open the 'Console' tab in the developer tools to see these messages
   print("Hello, javascript console.")
   print(`The P5 canvas is ${width}px wide and ${height}px tall`)
 

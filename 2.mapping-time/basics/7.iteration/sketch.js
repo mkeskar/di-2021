@@ -37,8 +37,8 @@ function setup() {
 
   push()
 
-  translate(100, 50)
   fill('red')
+  translate(100, 50)
   circle(0, 0, radius)
   circle(0, spacing, radius)
   circle(0, 2*spacing, radius)
@@ -46,23 +46,29 @@ function setup() {
   circle(0, 4*spacing, radius)
   circle(0, 5*spacing, radius)
 
-  translate(200, 0)
   fill('orange')
+  translate(125, 0)
   for (var i=0; i<6; i++){
     circle(0, i*spacing, radius)
   }
 
-  translate(200, 0)
   fill('yellow')
+  translate(125, 0)
   for (var y=0; y<6*spacing; y+=spacing){
-   circle(0, y, radius)
+    circle(0, y, radius)
   }
+
+  fill('limegreen')
+  translate(125, 0)
+  _.times(6, i => {
+    circle(0, i*spacing, radius)
+  })
 
   pop()
 
   translate(100, 400)
   var xPositions = [0, 5, 10, 20, 40, 80, 160, 320, 640]
-  xPositions.forEach(function(x, i){
+  xPositions.forEach( (x, i) => {
     stroke(255 - 30*i)
     line(x, 0, x, 150)
   })

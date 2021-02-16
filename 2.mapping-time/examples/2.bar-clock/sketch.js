@@ -5,25 +5,27 @@ var maxWidth = 760 // maximum width of each bar (the actual width will always be
 var spacing = 10 // the vertical space to skip between bars
 
 var discrete = false // flag whether to have the bars 'tick' from one value to the next or move smoothly,
-                    // try setting it to false and see what happens...
+                     // try setting it to false and see what happens...
 
-//this gets called only once in the very beginning
+// this gets called only once in the very beginning
 function setup() {
 	createCanvas(800, 600)
 }
 
-//this gets called every frame (about 60 frames per second)
+// this gets called every frame (about 60 frames per second)
 function draw() {
   background(255)
   noStroke()
 
-  // measure the current time & calculate the width in pixels of each bar
+  // store the current time in a local variable
   var now = clock()
+
+  // calculate the width in pixels of each bar
   if (discrete){
     // the map() function lets us *normalize* a value from a starting range then *project* it into another range
     var hourWidth = map(now.hour, 1,12, 0,maxWidth) // from hours (1-12) to pixels (0–maxWidth)
-    var minsWidth = map(now.min,  0,60, 0,maxWidth)  // from mins (0–60) to pixels (0–maxWidth)
-    var secsWidth = map(now.sec,  0,60, 0,maxWidth)  // from secs (0–60) to pixels (0–maxWidth)
+    var minsWidth = map(now.min,  0,60, 0,maxWidth) // from mins (0–60) to pixels (0–maxWidth)
+    var secsWidth = map(now.sec,  0,60, 0,maxWidth) // from secs (0–60) to pixels (0–maxWidth)
   }else{
     // alternatively, we can use the clock's 'progress' percentages
     hourWidth = maxWidth * now.progress.day

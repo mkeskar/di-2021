@@ -40,8 +40,21 @@ function setup(){
   }
 
   print('Iterating w/ Array.forEach():')
-  textValues.forEach(function(val, i){
-    print(i, val)
+  textValues.forEach( val => {
+    print(val);
   })
+
+  print('Iterating w/ array values & indices')
+  textValues.forEach( (val, i) => {
+    print(i, val);
+  })
+
+  print('Iterating using _.times and length:')
+  _.times(textValues.length, i => {
+    print(i, textValues[i]);
+  })
+
+
+
 }
 
