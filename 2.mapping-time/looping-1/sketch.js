@@ -9,8 +9,7 @@ function draw() {
   noStroke()
 
   var now = clock()
-  var spacing = 30
-  var y = 100
+  var spacing = 15
 
   // draw as many circles as the current `now.hours` value
   // using _.times. The first circle's y position should be at 100
@@ -18,32 +17,24 @@ function draw() {
   fill(0)
   _.times(now.hours, i=>
   {
-    circle(100, 100+i*spacing, 20)
+    circle(100, 50+i*spacing, 10)
   })
-}
-  /* for(let i=0, i<23, i++)
-  // {
-  //   if(arr[0]==i)
-  //   {
-      circle(100,y,20)
-      y+=spacing
-    }
 
-  }
-*/
 
   // draw as many circles as the current now.min value
   // by creating a list from 0 .. `now.min` using _.range
   // and then stepping through that list using _.each or .forEach
-  // fill(100)
-  // circle(200, 100, 20)
+  fill(100)
+  var list = _.range(0, now.min);
+  print(list);
+  list.forEach(i =>{circle(200, 50+i*spacing, 10)})
 
   // draw as many circles as the current `now.sec` value
   // using `for (;;){...}` syntax
   // fill(200)
   // circle(300, 100, 20)
   
-  
+  }
   // Phase 2:
   // Once you've successfully drawn vertical stacks of dots, modify
   // your loops to draw concentric circles whose diameters are 
